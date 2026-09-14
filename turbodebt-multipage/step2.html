@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KXJFVS2M');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TurboDebt (multi-page test) — Step 2 of 2</title>
+  <style>
+    :root{--brand:#0b5f4e;--ink:#1a1a1a;--muted:#667085;--line:#e4e7ec;--bg:#f5f7fa}
+    *{box-sizing:border-box} body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);margin:0;padding:40px 16px}
+    .card{max-width:40rem;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px 32px}
+    h1{margin:0 0 6px;font-size:1.4rem} p.hint{color:var(--muted);margin:0 0 18px}
+    label{display:block;font-weight:600;margin:14px 0 6px} input,select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;font-size:1rem}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px} button{margin-top:22px;padding:14px 22px;font-size:1.05rem;background:var(--brand);color:#fff;border:0;border-radius:999px;cursor:pointer}
+    .consent{font-size:.85rem;color:var(--muted);margin-top:16px;line-height:1.5} .badge{display:inline-block;background:#e7f7f0;color:var(--brand);border-radius:999px;padding:4px 10px;font-size:.8rem;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KXJFVS2M" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class="card">
+    <span class="badge">Step 2 of 2 · Details</span>
+    <h1>Almost done</h1>
+    <p class="hint">Step 1 answers are carried forward as hidden inputs (from the URL), so the final submit holds the whole journey.</p>
+    <form id="leadForm" action="thank-you.html" method="get">
+      <!-- carry-overs from step 1 (filled from the query string below) -->
+      <input type="hidden" name="name" id="c_name" /><input type="hidden" name="email" id="c_email" /><input type="hidden" name="phone" id="c_phone" />
+      <label for="birthdate">Date of birth</label><input id="birthdate" name="birthdate" type="date" required />
+      <label for="addressLine">Street address</label><input id="addressLine" name="addressLine" autocomplete="address-line1" required />
+      <div class="row">
+        <div><label for="city">City</label><input id="city" name="city" autocomplete="address-level2" required /></div>
+        <div><label for="state">State</label><select id="state" name="state" required><option value="">Select…</option><option>FL</option><option>TX</option><option>CA</option><option>NY</option><option>GA</option></select></div>
+      </div>
+      <label for="zipcode">ZIP code</label><input id="zipcode" name="zipcode" inputmode="numeric" autocomplete="postal-code" required />
+      <div class="consent">
+        By submitting this form, you consent to be contacted by phone, text message, or email by TurboDebt and its network of licensed representatives, which may include the use of an autodialer, prerecorded or artificial voice, regarding your inquiry, even if your number is on a Do Not Call list. Message and data rates may apply. Consent is not a condition of purchase. This request also constitutes your written instruction under the Fair Credit Reporting Act (FCRA) authorizing us to obtain your credit information (TCPA disclosure).
+        <label style="font-weight:500;margin-top:10px"><input type="checkbox" name="consent" id="consent" required style="width:auto;margin-right:8px" /> I have read and agree to the consent language above.</label>
+      </div>
+      <button type="submit">See my savings estimate</button>
+    </form>
+  </div>
+  <script>
+    // carry step-1 answers forward (the real funnel does the equivalent server-side / in JS)
+    var q = new URLSearchParams(location.search);
+    ['name','email','phone'].forEach(function(k){ var el = document.getElementById('c_' + k); if (el) el.value = q.get(k) || ''; });
+  </script>
+</body>
+</html>
